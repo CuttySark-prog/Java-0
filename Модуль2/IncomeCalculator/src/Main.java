@@ -27,20 +27,28 @@ public class Main
                 "(от 200 до 900 тысяч рублей): ");
             //записываем в переменную income значение, полученное с экрана
             int income = (new Scanner(System.in)).nextInt();
-            //если 
+            //если переменная checkIncomeRange не истина, тогда исполняется
             if(!checkIncomeRange(income)) {
                 continue;
             }
-
+            //вычисляем зарплату менеджера
             double managerSalary = income * managerPercent;
+            //вычисляем, что останется после вычета зарплаты и ежемесячных платежей
             double pureIncome = income - managerSalary -
                 calculateFixedCharges();
+            //вычисляем сумму налога
             double taxAmount = mainTaxPercent * pureIncome;
+            //вычисляем остаток после оплаты налога
             double pureIncomeAfterTax = pureIncome - taxAmount;
-
+            //создаем булеву переменную, сравнив остаток с минимальной суммой инвестирования
             boolean canMakeInvestments = pureIncomeAfterTax >=
                 minInvestmentsAmount;
-
+//            if (canMakeInvestments)
+//            {
+//                //создаем переменную, равную сумме возможного инвестирования
+//                double pureInvestIncome = pureIncomeAfterTax
+//            }
+            //выводим полученные значения
             System.out.println("Зарплата менеджера: " + managerSalary);
             System.out.println("Общая сумма налогов: " +
                 (taxAmount > 0 ? taxAmount : 0));
@@ -49,9 +57,16 @@ public class Main
             if(pureIncome < 0) {
                 System.out.println("Бюджет в минусе! Нужно срочно зарабатывать!");
             }
+            else if (canMakeInvestments){
+                System.out.println("Сумма инвестирования: " + pureIncomeAfterTax);
+            }
+            else {
+                System.out.println("Недостаточно для инвестирования");
+            }
         }
-    }
 
+    }
+    //проверяем величину вводимых доходов
     private static boolean checkIncomeRange(int income)
     {
         if(income < minIncome)
@@ -66,7 +81,7 @@ public class Main
         }
         return true;
     }
-
+    //вычисляем переменную фиксированных расходов
     private static int calculateFixedCharges()
     {
         return officeRentCharge +
