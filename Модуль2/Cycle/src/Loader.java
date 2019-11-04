@@ -1,21 +1,21 @@
 public class Loader {
     public static void main(String[] args) {
-        Integer TicketNumber = 200000;
-        Integer Final=210000;
+        Integer ticketNumber = 200000;
+        Integer stopSignal=210000;
 
-        for (TicketNumber =200000 ; TicketNumber<=Final; TicketNumber++ )
+        for (ticketNumber =200000 ; ticketNumber<=stopSignal; ticketNumber++ )
         {
-            System.out.println(TicketNumber);
+            System.out.println(ticketNumber);
         }
 
     }
 //        do
 //
 //    {
-//        System.out.println(TicketNumber);
-//        TicketNumber = TicketNumber + 1;
+//        System.out.println(ticketNumber);
+//        ticketNumber = ticketNumber + 1;
 //    }
-//        while(TicketNumber <=210000);
+//        while(ticketNumber <=210000);
 //
 }
 
