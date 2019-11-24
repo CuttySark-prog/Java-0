@@ -10,10 +10,7 @@ public class Loader
         Cat fox = new Cat();
         Cat vasya = new Cat();
         Cat tig = new Cat();
-      //  fox.setColor(Color.BLACK);
         Cat leo = new Cat();
-
-      //  Cat mini = new Cat(300);
 
         Cat mimi = Cat.getKitten();
 
@@ -43,10 +40,10 @@ public class Loader
 
 
 
-        while (barsic.wasAlive(true));
-           {
-           barsic.meow();
-            }
+//        while (barsic.getWasAlive())
+//           {
+//           barsic.meow();
+//            }
 
         masya.feed(0.1);
         fox.feed(200.3);
@@ -78,6 +75,10 @@ public class Loader
         System.out.println("Вася " + vasya.getStatus());
         System.out.println("Тиг " + tig.getStatus());
         System.out.println("Лео " + leo.getStatus());
+
+        System.out.println("Цвет кошки Лисы: " + fox.getColor());
+        System.out.println("Цвет котенка Мими: " + mimi.getColor());
+        System.out.println("Вес котенка Мими: " + mimi.getWeight());
 
         System.out.println("Колличество кошек: " + Cat.getCount());
     }

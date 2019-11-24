@@ -9,11 +9,14 @@ public class Cat
 
     public final int LEGS = 4;
     public final int EYES = 2;
+    private Color myColor ;
 
     private boolean wasAlive;
     private Double totalAmount = 0.0;
 
-    private String color;
+
+
+  //  private String color;
 
     static int count = 0;
 
@@ -26,30 +29,32 @@ public class Cat
         totalAmount = 0.0;
         count++;
         wasAlive = true;
+        myColor = Color.WHITE;
     }
 
-    public void setColor(String color)
+//    public void setColor(String color)
+//    {
+//       this.color = color;
+//    }
+
+    public Color getColor()
     {
-       this.color = color;
+        return myColor;
     }
 
-    public String getColor()
-    {
-        return color;
-    }
-
-    public Cat(double weight)
+    public Cat(double weight, Color myColor)
 
     {
         this.weight=weight;
         originWeight = this.weight;
         double minWeight = 100.0;
         double maxWeight = 500.0;
+        this.myColor = myColor;
     }
 
     public static Cat getKitten()
     {
-        Cat kitten = new Cat(250);
+        Cat kitten = new Cat(250,Color.BLACK);
         return new Cat();
     }
 
@@ -58,7 +63,10 @@ public class Cat
         if (wasAlive) {
             weight = weight - (100 + 1000 * Math.random());
             System.out.println("You feel a strange smell");
-            if (weight < MINWEIGHT) count --;
+            if (weight < MINWEIGHT) {
+                count--;
+                wasAlive = false;
+            }
         }
     }
 
@@ -67,7 +75,10 @@ public class Cat
         if (wasAlive) {
             weight = weight - 1;
             System.out.println("Meow");
-            if (weight < MAXWEIGHT) count --;
+            if (weight < MINWEIGHT) {
+                count--;
+                wasAlive = false;
+            }
         }
     }
 
@@ -77,7 +88,10 @@ public class Cat
             weight = weight + amount;
             //System.out.println(amount);
             totalAmount = totalAmount + amount;
-            if (weight > MAXWEIGHT) count --;
+            if (weight > MAXWEIGHT) {
+                count--;
+                wasAlive = false;
+            }
         }
         return weight;
     }
@@ -88,11 +102,17 @@ public class Cat
         if(wasAlive)
         {
             weight = weight + amount;
-            if (weight >MAXWEIGHT) count --;
+            if (weight > MAXWEIGHT) {
+                count--;
+                wasAlive = false;
+            }
         }
     }
 
-//    public boolean getWasAlive() {return wasAlive;}
+    public boolean getWasAlive()
+    {
+        return wasAlive;
+    }
 
     public Double getWeight()
     {
