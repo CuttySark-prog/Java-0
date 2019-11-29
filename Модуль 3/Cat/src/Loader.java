@@ -76,6 +76,8 @@ public class Loader
         System.out.println("Тиг " + tig.getStatus());
         System.out.println("Лео " + leo.getStatus());
 
+        mimi.setColor(Color.BLACK);
+
         System.out.println("Цвет кошки Лисы: " + fox.getColor());
         System.out.println("Цвет котенка Мими: " + mimi.getColor());
         System.out.println("Вес котенка Мими: " + mimi.getWeight());

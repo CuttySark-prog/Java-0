@@ -32,10 +32,10 @@ public class Cat
         myColor = Color.WHITE;
     }
 
-//    public void setColor(String color)
-//    {
-//       this.color = color;
-//    }
+    public void setColor(Color myColor)
+    {
+       this.myColor = myColor;
+    }
 
     public Color getColor()
     {
@@ -55,7 +55,7 @@ public class Cat
     public static Cat getKitten()
     {
         Cat kitten = new Cat(250,Color.BLACK);
-        return new Cat();
+        return kitten;
     }
 
     public void shit()
