@@ -14,22 +14,43 @@ public class Cat
     private boolean wasAlive;
     private Double totalAmount = 0.0;
 
-
-
-  //  private String color;
-
     static int count = 0;
+
+    public Cat(double weight, Color myColor)
+    {
+        this.weight = weight;
+        originWeight = weight;
+        this.myColor = myColor;
+        totalAmount = 0.0;
+        if (weight >= MINWEIGHT & weight <= MAXWEIGHT) {
+            wasAlive = true;
+            count++;
+        }
+    }
 
     public Cat()
     {
-        weight = 1500.0 + 3000.0 * Math.random();
-        originWeight = weight;
-        // minWeight = 1000.0;
-        // maxWeight = 9000.0;
-        totalAmount = 0.0;
-        count++;
-        wasAlive = true;
-        myColor = Color.WHITE;
+        this(1500.0 + 3000.0*Math.random(), Color.WHITE);
+//        weight = 1500.0 + 3000.0 * Math.random();
+//        originWeight = weight;
+//        totalAmount = 0.0;
+//        count++;
+//        wasAlive = true;
+//        myColor = Color.WHITE;
+    }
+
+    public Cat makeTwin()
+    {
+        Cat catTwin = new Cat();
+        catTwin.weight = this.weight;
+        catTwin.myColor = this.myColor;
+//      catTwin.totalAmount = this.totalAmount; - я проверяла эту строчку, клонируется кот с уже съеденой едой, а дальше их вес меняется сам по себе.
+        catTwin.originWeight = this.originWeight;
+
+        if (this.wasAlive = true) {
+            count++;
+        }
+        return catTwin;
     }
 
     public void setColor(Color myColor)
@@ -40,16 +61,6 @@ public class Cat
     public Color getColor()
     {
         return myColor;
-    }
-
-    public Cat(double weight, Color myColor)
-
-    {
-        this.weight=weight;
-        originWeight = this.weight;
-        double minWeight = 100.0;
-        double maxWeight = 500.0;
-        this.myColor = myColor;
     }
 
     public static Cat getKitten()
@@ -86,7 +97,6 @@ public class Cat
     {
         if(wasAlive) {
             weight = weight + amount;
-            //System.out.println(amount);
             totalAmount = totalAmount + amount;
             if (weight > MAXWEIGHT) {
                 count--;
@@ -123,6 +133,7 @@ public class Cat
     {
         return count;
     }
+
     public Double getTotalAmount()
     {
         return totalAmount;
@@ -142,15 +153,5 @@ public class Cat
         else {
             return "Playing";
         }
-    }
-
-    public Cat makeTwin()
-    {
-        Cat catTwin = new Cat();
-        this.weight = weight;
-        this.totalAmount = totalAmount;
-        this.originWeight = originWeight;
-
-        return catTwin;
     }
 }

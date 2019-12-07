@@ -5,8 +5,8 @@ public class Loader
     public static void main(String[] args)
     {
         Cat murzic= new Cat();
-        Cat barsic = new Cat();
-        Cat masya = new Cat();
+        Cat barsic = new Cat(4500, Color.CINNAMON);
+        Cat masya = new Cat(800, Color.BLUE);
         Cat fox = new Cat();
         Cat vasya = new Cat();
         Cat tig = new Cat();
