@@ -39,19 +39,24 @@ public class Cat
 //        myColor = Color.WHITE;
     }
 
-    public Cat makeTwin()
+    public Cat(Cat catTwin)
     {
-        Cat catTwin = new Cat();
-        catTwin.weight = this.weight;
-        catTwin.myColor = this.myColor;
-//      catTwin.totalAmount = this.totalAmount; - я проверяла эту строчку, клонируется кот с уже съеденой едой, а дальше их вес меняется сам по себе.
-        catTwin.originWeight = this.originWeight;
-
-        if (this.wasAlive = true) {
-            count++;
-        }
-        return catTwin;
+        this(catTwin.weight, catTwin.myColor);
     }
+
+//    public Cat makeTwin()
+//    {
+//        Cat catTwin = new Cat();
+//        catTwin.weight = this.weight;
+//        catTwin.myColor = this.myColor;
+////      catTwin.totalAmount = this.totalAmount; - я проверяла эту строчку, клонируется кот с уже съеденой едой, а дальше их вес меняется сам по себе.
+//        catTwin.originWeight = this.originWeight;
+//
+//        if (this.wasAlive == true) {
+//            count++;
+//        }
+//        return catTwin;
+//    }
 
     public void setColor(Color myColor)
     {

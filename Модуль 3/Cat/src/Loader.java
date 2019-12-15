@@ -12,6 +12,8 @@ public class Loader
         Cat tig = new Cat();
         Cat leo = new Cat();
 
+        Cat leo2 = new Cat(leo);
+
         Cat mimi = Cat.getKitten();
 
         System.out.println("Колличество кошек: " + Cat.getCount());
@@ -53,8 +55,8 @@ public class Loader
         leo.feed(300.0);
         leo.feed(100.0);
         leo.feed(150.0);
-        Cat leo2 = leo.makeTwin();
-        leo.drink(300.9);
+ //     Cat leo2 = leo.makeTwin();
+        leo2.drink(300.9);
 
         System.out.println("Вес Лео2: " + leo.getWeight());
         System.out.println("Еды в Лео2: " + leo.getTotalAmount());
@@ -67,6 +69,7 @@ public class Loader
         System.out.println("Вес Васи: " + vasya.getWeight());
         System.out.println("Вес Тига: " + tig.getWeight());
         System.out.println("Вес Лео: " + leo.getWeight());
+        System.out.println("Вес Лео2: " + leo2.getWeight());
 
         System.out.println("Мурзик " + murzic.getStatus());
         System.out.println("Барсик " + barsic.getStatus());
