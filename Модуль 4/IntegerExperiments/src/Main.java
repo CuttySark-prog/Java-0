@@ -16,7 +16,9 @@ public class Main
  //       System.out.println(s.charAt(1));
    //     System.out.println(s.length());
  //       int index = s.();
-        Integer sum = Character.getNumericValue(s.charAt(0)) + Character.getNumericValue(s.charAt(1)) + Character.getNumericValue(s.charAt(2)) + Character.getNumericValue(s.charAt(3));
+        Integer sum = Character.getNumericValue(s.charAt(0))
+                + Character.getNumericValue(s.charAt(1))
+                + Character.getNumericValue(s.charAt(2)) + Character.getNumericValue(s.charAt(3));
  //       System.out.println(sum);
         return sum;
     }
