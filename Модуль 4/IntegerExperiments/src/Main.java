@@ -5,26 +5,21 @@ public class Main
     {
         Container container = new Container();
         container.count += 7843;
-        int number = container.count;
-        int summ = sumDigits(555);
-//        System.out.println(sumDigits());
+        System.out.println(sumDigits(1234567));
     }
 
-    public Integer sumDigits(Integer number)
+    public static Integer sumDigits(Integer number)
     {
-        String s = Integer.toString(666);
- //       System.out.println(s.charAt(1));
-   //     System.out.println(s.length());
- //       int index = s.();
-        Integer summ = Character.getNumericValue(s.charAt(0))
-                + Character.getNumericValue(s.charAt(1))
-                + Character.getNumericValue(s.charAt(2)) + Character.getNumericValue(s.charAt(3));
-        System.out.println(summ);
-        return summ;
-    }
-    public Integer getSum(summ)
+        String s = Integer.toString(number);
+
+        int itr;;
+        int sum =0;
+
+        for  (itr = s.length() ; itr != 0;   itr = itr - 1)
         {
-            this.summ =
+            sum += Character.getNumericValue(s.charAt(itr-1));
         }
+        return sum;
+    }
 }
 
