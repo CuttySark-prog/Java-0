@@ -6,17 +6,17 @@ public class Loader {
         Scanner family = new Scanner(System.in);
         String enter = family.nextLine();
 
-        String full_name = enter.trim();
-        int itr = 1;
+        String fullName = enter.trim();
+      //  int itr = 1;
         int error = 0;
         int letter = 0;
         int[] numberWhitespase ;
         numberWhitespase = new int[10];
 
-        for (int i = 0; i < full_name.length(); i++)
+        for (int i = 0; i < fullName.length(); i++)
         {
             char currentCharacter = enter.charAt(i);
-            if (!Character.isAlphabetic(currentCharacter) & !Character.isWhitespace(currentCharacter))
+            if (!Character.isAlphabetic(currentCharacter) && !Character.isWhitespace(currentCharacter))
                 error = error +1;
             if (Character.isWhitespace(currentCharacter)) {
                 letter = letter + 1;
@@ -31,9 +31,10 @@ public class Loader {
         }
         if (error == 0 & letter==2)
         {
-            System.out.println(     "Фамилия: " + full_name.substring(0,numberWhitespase[0]) + "\n" +
-                    "Имя: "  + full_name.substring(numberWhitespase[0]+1, numberWhitespase[1]) + "\n" +
-                    "Отчество: " + full_name.substring(numberWhitespase[1]+1, full_name.length()));
+            String f = fullName.substring(0,numberWhitespase[0]);
+            String n = fullName.substring(numberWhitespase[0]+1, numberWhitespase[1]);
+            String s = fullName.substring(numberWhitespase[1]+1);
+            System.out.printf("Фамилия: %s %nИмя: %s %nОтчество: %s %n", f, n, s);
         }
 
         else
