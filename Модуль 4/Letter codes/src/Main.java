@@ -7,17 +7,10 @@ public class Main
     public static void main (String args[])
     {
         String alfabet = "aabcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ";
-        System.out.println(String.valueOf(CharBuffer.wrap(alfabet)));
+      //  System.out.println(String.valueOf(CharBuffer.wrap(alfabet)));
         for (int i = 0; i < alfabet.length(); i++)
         {
-
-
-         //   System.out.println(alfabet.getBytes());
-        }
-        String alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯa";
-        for (int i = 0; i < alfabet.length(); i++)
-        {
-            System.out.println(alf.getBytes());
+          System.out.printf("%s - %s %n", alfabet.charAt(i), alfabet.getBytes());
         }
     }
 }
