@@ -29,7 +29,7 @@ public class Loader {
         {
             System.out.println("Вы ввели не все данные");
         }
-        if (error == 0 & letter==2)
+        if (error == 0 && letter==2)
         {
             String f = fullName.substring(0,numberWhitespase[0]);
             String n = fullName.substring(numberWhitespase[0]+1, numberWhitespase[1]);
