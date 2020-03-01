@@ -6,41 +6,49 @@ public class Loader {
         Scanner family = new Scanner(System.in);
         String enter = family.nextLine();
 
-        String fullName = enter.trim();
-      //  int itr = 1;
-        int error = 0;
-        int letter = 0;
-        int[] numberWhitespase ;
-        numberWhitespase = new int[10];
+        String[] name = enter.split ("\\s+");
 
-        for (int i = 0; i < fullName.length(); i++)
+        for (int i = 0; i < name.length; i++)
         {
-            char currentCharacter = enter.charAt(i);
-            if (!Character.isAlphabetic(currentCharacter) && !Character.isWhitespace(currentCharacter))
-                error = error +1;
-            if (Character.isWhitespace(currentCharacter)) {
-                letter = letter + 1;
-                numberWhitespase [letter-1] = i;
-            //    System.out.println(numberWhitespase[0] + numberWhitespase[1]);
-            }
-
-        }
-        if (letter<2)
-        {
-            System.out.println("Вы ввели не все данные");
-        }
-        if (error == 0 && letter==2)
-        {
-            String f = fullName.substring(0,numberWhitespase[0]);
-            String n = fullName.substring(numberWhitespase[0]+1, numberWhitespase[1]);
-            String s = fullName.substring(numberWhitespase[1]+1);
-            System.out.printf("Фамилия: %s %nИмя: %s %nОтчество: %s %n", f, n, s);
+            System.out.println(name[i]);
         }
 
-        else
-        {
-            System.out.println("Введены недопустимые или лишние символы");
-        }
+//
+//        String fullName = enter.trim();
+//      //  int itr = 1;
+//        int error = 0;
+//        int letter = 0;
+//        int[] numberWhitespase ;
+//        numberWhitespase = new int[10];
+//
+//        for (int i = 0; i < fullName.length(); i++)
+//        {
+//            char currentCharacter = enter.charAt(i);
+//            if (!Character.isAlphabetic(currentCharacter) && !Character.isWhitespace(currentCharacter))
+//                error = error +1;
+//            if (Character.isWhitespace(currentCharacter))
+//            {
+//                letter = letter + 1;
+//                numberWhitespase [letter-1] = i;
+//            }
+//
+//        }
+//        if (letter<2)
+//        {
+//            System.out.println("Вы ввели не все данные");
+//        }
+//        if (error == 0 && letter==2)
+//        {
+//            String f = fullName.substring(0,numberWhitespase[0]);
+//            String n = fullName.substring(numberWhitespase[0]+1, numberWhitespase[1]);
+//            String s = fullName.substring(numberWhitespase[1]+1);
+//            System.out.printf("Фамилия: %s %nИмя: %s %nОтчество: %s %n", f, n, s);
+//        }
+
+//        else
+//        {
+//            System.out.println("Введены недопустимые или лишние символы");
+//        }
     }
 }
 

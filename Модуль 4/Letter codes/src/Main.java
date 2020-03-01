@@ -10,7 +10,7 @@ public class Main
       //  System.out.println(String.valueOf(CharBuffer.wrap(alfabet)));
         for (int i = 0; i < alfabet.length(); i++)
         {
-          System.out.printf("%s - %s %n", alfabet.charAt(i), alfabet.getBytes());
+          System.out.printf("%s - %s %n", alfabet.charAt(i), alfabet.getBytes(Charset.defaultCharset()));
         }
     }
 }
