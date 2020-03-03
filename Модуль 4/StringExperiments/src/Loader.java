@@ -11,11 +11,11 @@ public class Loader
         System.out.println(salary);
         String[] salarys = salary.split("\\s+");
         int sum = 0;
-//        for (int i = 0; i < salarys.length; i++)
-//        {
-//          System.out.println(salarys[i]);
-//          sum = sum + Integer.parseInt(Arrays.toString(salarys));
-//        }
+        for (int i = 0; i < salarys.length; i++)
+        {
+          System.out.println(salarys[i]);
+          sum = sum + Integer.parseInt(salarys[i]);
+        }
 
 //   //     int numArr[] = new int[salarys.length];
 //   //     for (int i = 0; i < salarys.length; i++) {

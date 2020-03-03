@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class loader
+public class Loader
 {
     public static void main (String args[])
     {
@@ -17,10 +17,10 @@ public class loader
 
         if (sortNumber.length() == 11)
         {
-          cod = sortNumber.substring(1,4);
-          cod1 = sortNumber.substring(4,7);
-          cod2 = sortNumber.substring(7,9);
-          cod3 = sortNumber.substring(9);
+            cod = sortNumber.substring(1,4);
+            cod1 = sortNumber.substring(4,7);
+            cod2 = sortNumber.substring(7,9);
+            cod3 = sortNumber.substring(9);
             System.out.printf("+7 %s %s-%s-%s", cod, cod1, cod2, cod3);
         }
 
@@ -37,6 +37,6 @@ public class loader
             System.out.println("Номер введен неполностью");
         }
 
-      //  System.out.printf("+7 %s %s-%s-%s", cod, cod1, cod2, cod3);
+        //  System.out.printf("+7 %s %s-%s-%s", cod, cod1, cod2, cod3);
     }
 }
