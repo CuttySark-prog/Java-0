@@ -11,12 +11,13 @@ public class Loader
 //        String sal = salary.trim();
 //        String[] salarys = sal.split("\\s+");
         //Вариант 2
-        var m = Pattern.compile("(\\d+)(\\d+)(\\d+)").matcher(text);
+        var m = Pattern.compile("(\\d+)([^\\d]+)(\\d+)([^\\d]+)(\\d+)").matcher(text);
         if (m.find()) {
             System.out.println("Зарплата Васи: " + m.group(1));
-            System.out.println("Зарплата Пети: " + m.group(2));
-            System.out.println("Зарплата Маши: " + m.group(3));
-            System.out.println("Все вместе заработали: " + (Integer.parseInt(m.group(1))+Integer.parseInt(m.group(2)) + Integer.parseInt(m.group(3))));
+            System.out.println("Зарплата Пети: " + m.group(3));
+            System.out.println("Зарплата Маши: " + m.group(5));
+          //  System.out.println("Зарплата Маши: " + m.group(4));
+            System.out.println("Все вместе заработали: " + (Integer.parseInt(m.group(1))+Integer.parseInt(m.group(3)) + Integer.parseInt(m.group(5))));
         }
 
             //Вариант 1

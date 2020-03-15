@@ -11,14 +11,12 @@ public class Loader
         String number = enterNumber.nextLine();
         //Версия 2
 
-        Pattern pattern = Pattern.compile("(//+7,8)?([0-9]{3})([0-9]{3})([0-9]{2}])([0-9]{2})");
-        Matcher matcher = pattern.matcher(number);
-      //  String num  =  matcher.replaceAll( "s");
-        var m = pattern.compile("(/+7,/8)?([0-9]{3})([0-9]{3})([0-9]{2}])([0-9]{2})").matcher(number);
+        var pattern = Pattern.compile("(\\D*)(7|8)(\\D*)(?<cod1>9[0-9]{2})(\\D*)(?<cod2>[0-9]{3})(\\D*)(?<cod3>[0-9]{2})(\\D*)(?<cod4>[0-9]{2})");
+        var m = pattern.matcher(number);
         if (m.find())
         {
             System.out.println("Вы ввели");
-            System.out.printf("+7 %s %s-%s-%s", m.group(2), m.group(3), m.group(4), m.group(5));
+            System.out.printf("+7 %s %s-%s-%s", m.group("cod1"), m.group("cod2"), m.group("cod3"), m.group("cod4"));
         }
         else System.out.println("Что-то пошло не так");
         //Версия 1
