@@ -10,14 +10,14 @@ public class Loader
         LocalDate birthdayDate = LocalDate.of(1986, 8, 25);
         LocalDate date = LocalDate.now();
         Period age = Period.between(birthdayDate,date);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy-E");
 
         System.out.println(age.getYears());
 
         for (int i = 0; i <= age.getYears(); i++)
         {
             
-            System.out.printf("%d - %s - %s%n", i, birthdayDate.format(formatter), birthdayDate.getDayOfWeek());
+            System.out.printf("%d - %s%n", i, birthdayDate.format(formatter));
             birthdayDate = birthdayDate.plusYears(1);
         }
     }
