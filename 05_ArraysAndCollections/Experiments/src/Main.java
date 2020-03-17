@@ -14,7 +14,9 @@ public class Main
 //            System.out.println(colors[(colors.length-i-1)]);
 //        }
 
-        /*Часть2*/
+        /*Часть2 - Не очень довольна найденным решением, так как система пишет,
+         что оно устаревшее, но другого способа округлить до десятых я не нашла.
+         Да и как это работает, честно говоря не совем понимаю.*/
 //        double sumTemperature = 0;
 //        double[] patientTemperature = new double[30];
 //        int healthyPatient = 0;
