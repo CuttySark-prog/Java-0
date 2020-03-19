@@ -9,53 +9,62 @@ public class Main
         /*Часть1*/
 //        String text = "Каждый охотник желает знать, где сидит фазан";
 //        String[] colors = text.split(",?\\s+");
+//        String[] colorsReverse = new String[colors.length];
+//        for(int j = 0; j < colors.length; j++)
+//        {
+//            colorsReverse[j] = colors[colors.length-1-j];
+//        }
+//
 //        for(int i = 0; i < colors.length; i++)
 //        {
-//            System.out.println(colors[(colors.length-i-1)]);
+//            System.out.println(colorsReverse[i]);
 //        }
 
-        /*Часть2 - Не очень довольна найденным решением, так как система пишет,
-         что оно устаревшее, но другого способа округлить до десятых я не нашла.
-         Да и как это работает, честно говоря не совем понимаю.*/
+        /*Часть2 */
+
 //        double sumTemperature = 0;
 //        double[] patientTemperature = new double[30];
+//
 //        int healthyPatient = 0;
 //
 //        for(int i = 0; i< patientTemperature.length; i++)
 //        {
-//            double value = 32.0 + (10*Math.random());
-//            patientTemperature[i] = BigDecimal.valueOf(value).setScale(1, BigDecimal.ROUND_HALF_DOWN).doubleValue();
-//            System.out.print(patientTemperature[i] + ", ");
-//            sumTemperature = sumTemperature + value;
-//            if (value < 36.9 && value > 36.2)
+//            patientTemperature[i] = Hospital.MIN_TEMP + ((Hospital.MAX_TEMP - Hospital.MIN_TEMP)*Math.random());
+//            //   patientTemperature[i] = BigDecimal.valueOf(value).setScale(1, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+//            System.out.printf("%.1f; ", patientTemperature[i]);
+//            sumTemperature = sumTemperature + patientTemperature[i];
+//            if (patientTemperature[i] < Hospital.MAX_HEALTHY_TEMP && patientTemperature[i] > Hospital.MIN_HEALTY_TEMP)
 //            {
-//                healthyPatient = +1;
+//                healthyPatient ++;
 //            }
 //        }
 //
-//        double roundTemperature = BigDecimal.valueOf((sumTemperature/patientTemperature.length)).setScale(1, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+//        //   double roundTemperature = BigDecimal.valueOf((sumTemperature/patientTemperature.length)).setScale(1, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+//        double roundTemperature = sumTemperature/patientTemperature.length;
 //        System.out.printf("%n Средняя температура: %.1f %n Здоровых пациентов: %d", roundTemperature, healthyPatient);
 
         /*Часть3*/
 
-        String[][]drawX = {
-                {"*","X", " ", " ", " ", " ", " ", " ","X"},
-                {"*"," ", "X ", " ", " ", " ", "X", " "},
-                {"*", " ", " ", "X", " ", "X", " ", " "},
-                {"*", " ", " ", " ", "X", " ", " ", " "},
-                {"*", " ", " ", "X", " ", "X", " ", " "},
-                {"*", " ", "X", " ", " ", " ", "X", " "},
-                {"*","X", " ", " ", " ", " ", " ", "X"}
-        };
-        for (int i = 0; i < drawX.length; i++)
+        int size = 100;
+//        String[][]drawX = {
+//                {"*","X", " ", " ", " ", " ", " ", " ","X"},
+//                {"*"," ", "X ", " ", " ", " ", "X", " "},
+//                {"*", " ", " ", "X", " ", "X", " ", " "},
+//                {"*", " ", " ", " ", "X", " ", " ", " "},
+//                {"*", " ", " ", "X", " ", "X", " ", " "},
+//                {"*", " ", "X", " ", " ", " ", "X", " "},
+//                {"*","X", " ", " ", " ", " ", " ", "X"}
+//        };
+        for (int i = 0; i < size; i++)
         {
-            System.out.println("");
-            for (int j = 0; j<drawX[i].length; j++)
+            System.out.printf("%n");
+            for (int j = 0; j<size; j++)
             {
-                System.out.printf(drawX[i][j]);
+                if (i == j || j == (size-i-1)) {
+                    System.out.print("X");
+                }
+                else System.out.print("  ");
             }
         }
-
-
     }
 }
