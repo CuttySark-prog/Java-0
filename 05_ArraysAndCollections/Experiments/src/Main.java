@@ -7,18 +7,16 @@ public class Main
     public static void main (String args[])
     {
         /*Часть1*/
-//        String text = "Каждый охотник желает знать, где сидит фазан";
-//        String[] colors = text.split(",?\\s+");
-//        String[] colorsReverse = new String[colors.length];
-//        for(int j = 0; j < colors.length; j++)
-//        {
-//            colorsReverse[j] = colors[colors.length-1-j];
-//        }
-//
-//        for(int i = 0; i < colors.length; i++)
-//        {
-//            System.out.println(colorsReverse[i]);
-//        }
+        String text = "Каждый охотник желает знать, где сидит фазан";
+        String[] colors = text.split(",?\\s+");
+
+        for (int i = colors.length-1, j = 0; i >=colors.length/2 ; i--,j++) {
+            String temp = colors[j];
+            colors[j] = colors[i];
+            colors[i] = temp;
+        }
+
+        for(String key : colors){ System.out.println(key); }
 
         /*Часть2 */
 
@@ -55,16 +53,18 @@ public class Main
 //                {"*", " ", "X", " ", " ", " ", "X", " "},
 //                {"*","X", " ", " ", " ", " ", " ", "X"}
 //        };
-        for (int i = 0; i < size; i++)
-        {
-            System.out.printf("%n");
-            for (int j = 0; j<size; j++)
-            {
-                if (i == j || j == (size-i-1)) {
-                    System.out.print("X");
-                }
-                else System.out.print("  ");
-            }
-        }
+
+        //
+//        for (int i = 0; i < size; i++)
+//        {
+//            System.out.printf("%n");
+//            for (int j = 0; j<size; j++)
+//            {
+//                if (i == j || j == (size-i-1)) {
+//                    System.out.print("X");
+//                }
+//                else System.out.print("  ");
+//            }
+//        }
     }
 }
