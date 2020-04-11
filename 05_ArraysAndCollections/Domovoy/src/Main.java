@@ -12,11 +12,16 @@ public class Main
                 " %nEDIT - заменть дело с указанным номером" +
                 " %nDELETE - удалить дело%n");
         Scanner enterNumber = new Scanner(System.in);
-        ArrayList<String> first = new ArrayList<>();
-        //List_task first = new List_task(); - почему не получается?
+        ArrayList<String> list = new ArrayList<>();
+
+        private static void printList (ArrayList<String> list)
+        {
+            for (String item: list) {
+                System.out.println(item);}
+        }
+
         while (!enterNumber.equals(""))
         {
-            //ArrayList<String> first = new ArrayList<>();
             enterNumber = new Scanner(System.in);
             String command = enterNumber.nextLine();
             Matcher matchAddIndexed = Pattern.compile("^ADD (?<dealNo>\\d+) (?<text>.+)").matcher(command);
@@ -24,27 +29,25 @@ public class Main
             Matcher matchExit = Pattern.compile("^EXIT").matcher(command);
 
 
-            if (matchAddIndexed.matches()) {
-
+            if (matchAddIndexed.matches())
+            {
                 System.out.println("Команда добавения дела с индексом");
 
                 int dealNo = Integer.parseInt(matchAddIndexed.group("dealNo"));
-                if(dealNo >= first.size())
+                if(dealNo >= list.size())
                 {
-                    dealNo = first.size();
+                    dealNo = list.size();
                 }
                 System.out.println("Индекс: " + dealNo);
-                first.add(dealNo, matchAddIndexed.group("text"));
-                for (String item: first) {
-                    System.out.println(item);}
+                list.add(dealNo, matchAddIndexed.group("text"));
+                printList;
             }
             else if (matchAdd.matches()) {
 
                 System.out.println("Команда добавения дела без индекса");
                 System.out.println("Текст: " + matchAdd.group("text"));
-                first.add(matchAdd.group("text"));
-                for (String item : first) {
-                    System.out.println(item);}
+                list.add(matchAdd.group("text"));
+                printList;
             }
             else if(matchExit.matches())
             {
@@ -52,7 +55,8 @@ public class Main
                 break;
             }
 
-            else {
+            else
+            {
                 System.out.println("Invalid");
             }
 //            if (comand.equals("LIST")) {
