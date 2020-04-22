@@ -5,6 +5,11 @@ import java.util.regex.Pattern;
 
 public class Main
 {
+    private static void printList (ArrayList<String> list)
+    {
+        for (String item: list) {
+            System.out.println(item);}
+    }
     public static void main (String args[])
     {
         System.out.printf("Введите команду: %nLIST - вывод дел с порядковыми номерами" +
@@ -14,12 +19,6 @@ public class Main
         Scanner enterNumber = new Scanner(System.in);
         ArrayList<String> list = new ArrayList<>();
 
-        private static void printList (ArrayList<String> list)
-        {
-            for (String item: list) {
-                System.out.println(item);}
-        }
-
         while (!enterNumber.equals(""))
         {
             enterNumber = new Scanner(System.in);
@@ -27,6 +26,9 @@ public class Main
             Matcher matchAddIndexed = Pattern.compile("^ADD (?<dealNo>\\d+) (?<text>.+)").matcher(command);
             Matcher matchAdd = Pattern.compile("^ADD (?<text>.+)").matcher(command);
             Matcher matchExit = Pattern.compile("^EXIT").matcher(command);
+            Matcher matchList = Pattern.compile("^LIST").matcher(command);
+            Matcher matchEdit = Pattern.compile("^EDIT (?<dealNo>\\d+) (?<text>.+)").matcher(command);
+            Matcher matchDelete = Pattern.compile("^DELETE (?<dealNo>\\d+)").matcher(command);
 
 
             if (matchAddIndexed.matches())
@@ -39,41 +41,62 @@ public class Main
                     dealNo = list.size();
                 }
                 System.out.println("Индекс: " + dealNo);
-                list.add(dealNo, matchAddIndexed.group("text"));
-                printList;
+                list.add((dealNo-1), matchAddIndexed.group("text"));
+                printList(list);
             }
-            else if (matchAdd.matches()) {
-
+            else if (matchAdd.matches())
+            {
                 System.out.println("Команда добавения дела без индекса");
                 System.out.println("Текст: " + matchAdd.group("text"));
                 list.add(matchAdd.group("text"));
-                printList;
+                printList(list);
+            }
+            else if(matchList.matches())
+            {
+                printList(list);
+            }
+            else if(matchEdit.matches())
+            {
+                System.out.println("Команда замены существующего дела");
+
+                int dealNo = Integer.parseInt(matchEdit.group("dealNo"));
+                if(dealNo - 1 >= list.size())
+                {
+                    System.out.println("Дела под таким номером нет");
+                }
+                else
+                {
+                    System.out.println("Индекс: " + dealNo);
+                    list.remove(dealNo - 1);
+                    list.add(dealNo - 1, matchEdit.group("text"));
+                    printList(list);
+                }
+            }
+            else  if(matchDelete.matches())
+            {
+                System.out.println("Команда удаления существующего дела");
+
+                int dealNo = Integer.parseInt(matchDelete.group("dealNo"));
+                if(dealNo - 1 >= list.size())
+                {
+                    System.out.println("Дела под таким номером нет");
+                }
+                else
+                {
+                    System.out.println("Индекс: " + dealNo);
+                    list.remove(dealNo - 1);
+                    printList(list);
+                }
             }
             else if(matchExit.matches())
             {
                 System.out.println("Завершение работы");
                 break;
             }
-
             else
             {
                 System.out.println("Invalid");
             }
-//            if (comand.equals("LIST")) {
-//                //  for (String item : list_task())
-//                System.out.println("Список задач");
-//                continue;
-//            }
-//
-//            if (comand.equals("DELETE")) {
-//                System.out.println("задача удалена");
-//                continue;
-//            }
-//            else
-//            {
-//                System.out.println("Такой команды пока нет.");
-//            }
-
         }
     }
 }
