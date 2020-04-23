@@ -7,8 +7,10 @@ public class Main
 {
     private static void printList (ArrayList<String> list)
     {
-        for (String item: list) {
-            System.out.println(item);}
+        for (String item: list)
+        {
+            System.out.println(item);
+        }
     }
     public static void main (String args[])
     {
@@ -25,8 +27,8 @@ public class Main
             String command = enterNumber.nextLine();
             Matcher matchAddIndexed = Pattern.compile("^ADD (?<dealNo>\\d+) (?<text>.+)").matcher(command);
             Matcher matchAdd = Pattern.compile("^ADD (?<text>.+)").matcher(command);
-            Matcher matchExit = Pattern.compile("^EXIT").matcher(command);
-            Matcher matchList = Pattern.compile("^LIST").matcher(command);
+            Matcher matchExit = Pattern.compile("EXIT").matcher(command);
+            Matcher matchList = Pattern.compile("LIST").matcher(command);
             Matcher matchEdit = Pattern.compile("^EDIT (?<dealNo>\\d+) (?<text>.+)").matcher(command);
             Matcher matchDelete = Pattern.compile("^DELETE (?<dealNo>\\d+)").matcher(command);
 
@@ -39,9 +41,19 @@ public class Main
                 if(dealNo >= list.size())
                 {
                     dealNo = list.size();
+                    System.out.println("Индекс: " + (dealNo+1));
+                    list.add((dealNo), matchAddIndexed.group("text"));
                 }
-                System.out.println("Индекс: " + dealNo);
-                list.add((dealNo-1), matchAddIndexed.group("text"));
+                else if(dealNo - 1 <= 0 )
+                {
+                    System.out.println("Используйте, пожалуйста, натуральные числа");
+                    continue;
+                }
+                else
+                {
+                    System.out.println("Индекс: " + (dealNo));
+                    list.add((dealNo - 1), matchAddIndexed.group("text"));
+                }
                 printList(list);
             }
             else if (matchAdd.matches())
@@ -64,11 +76,14 @@ public class Main
                 {
                     System.out.println("Дела под таким номером нет");
                 }
+                else if(dealNo - 1 <= 0 )
+                {
+                    System.out.println("Используйте, пожалуйста, натуральные числа");
+                }
                 else
                 {
                     System.out.println("Индекс: " + dealNo);
-                    list.remove(dealNo - 1);
-                    list.add(dealNo - 1, matchEdit.group("text"));
+                    list.set(dealNo - 1, matchEdit.group("text"));
                     printList(list);
                 }
             }
@@ -80,6 +95,10 @@ public class Main
                 if(dealNo - 1 >= list.size())
                 {
                     System.out.println("Дела под таким номером нет");
+                }
+                else if(dealNo - 1 <= 0 )
+                {
+                    System.out.println("Используйте, пожалуйста, натуральные числа");
                 }
                 else
                 {
