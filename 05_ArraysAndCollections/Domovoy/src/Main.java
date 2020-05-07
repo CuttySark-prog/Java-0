@@ -15,26 +15,6 @@ public class Main
         }
     }
 
-//    private static int scanIndex(int dealNo)
-//    {
-////        int dealNo = Integer.parseIntIndex(m.group("dealNo"));
-////        int dealNo = Integer.parseEdit(m.group("dealNo"));
-////        int dealNo = Integer.parseDelete(m.group("dealNo"));
-//        if(dealNo - 1 > list.size())
-//        {
-//            System.out.println("Дела под таким номером нет");
-//            return -1;
-//        }
-//        else if(dealNo  <= 0)
-//        {
-//            System.out.println("Используйте, пожалуйста, натуральные числа");
-//            return -1;
-//        }
-//        else
-//        {
-//            return 1;
-//        }
-//    }
     private static int scanIndex(Matcher m)
     {
         int dealNo = Integer.parseInt(m.group("dealNo"));
@@ -50,7 +30,7 @@ public class Main
         }
         else
         {
-            return 1;
+            return dealNo;
         }
     }
 
@@ -77,15 +57,13 @@ public class Main
             {
                 System.out.println("Команда добавения дела с индексом");
 
-                int dealNo = Integer.parseInt(matchAddIndexed.group("dealNo"));
-                scanIndex(matchAddIndexed);
-                if (scanIndex(matchAddIndexed) == 1)
+                if (!(scanIndex(matchAddIndexed) == - 1))
                     {
-                        System.out.println("Индекс: " + (dealNo));
-                        list.add((dealNo - 1), matchAddIndexed.group("text"));
+                        System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
+                        list.add((scanIndex(matchAddIndexed)-1), matchAddIndexed.group("text"));
                         printList();
                     }
-                else if (scanIndex(matchAddIndexed) == - 1)
+                else
                 {
                     continue;
                 }
@@ -105,16 +83,13 @@ public class Main
             {
                 System.out.println("Команда замены существующего дела");
 
-                int dealNo = Integer.parseInt(matchEdit.group("dealNo"));
-                scanIndex(matchEdit);
-
-                if (scanIndex(matchEdit) == 1)
+                if (!(scanIndex(matchAddIndexed) == - 1))
                 {
-                    System.out.println("Индекс: " + (dealNo));
-                    list.add((dealNo - 1), matchEdit.group("text"));
+                    System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
+                    list.add(((scanIndex(matchAddIndexed)-1)), matchEdit.group("text"));
                     printList();
                 }
-                else if (scanIndex(matchEdit) == -1)
+                else
                 {
                     continue;
                 }
@@ -123,15 +98,13 @@ public class Main
             {
                 System.out.println("Команда удаления существующего дела");
 
-                int dealNo = Integer.parseInt(matchDelete.group("dealNo"));
-                scanIndex(matchDelete);
                 if (scanIndex(matchDelete) == 1)
                 {
-                    System.out.println("Индекс: " + (dealNo));
-                    list.remove((dealNo - 1));
+                    System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
+                    list.remove((scanIndex(matchAddIndexed)) - 1);
                     printList();
                 }
-                else if (scanIndex(matchDelete) == -1)
+                else
                 {
                     continue;
                 }
