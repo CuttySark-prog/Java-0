@@ -15,7 +15,8 @@ public class Loader
         {
             enterAddress = new Scanner(System.in);
             String address = enterAddress.nextLine();
-            Matcher matchAddress = Pattern.compile("^ADD (?<mail>.(?<name>.+)@(?<box>.+)\\.(?<end>.+))").matcher(address);
+            Matcher matchAddress = Pattern.compile("^[a-zA-Z0-9-]+@[a-z]+\\.[a-z]+").matcher(address);
+            Matcher matchExit = Pattern.compile("EXIT").matcher(address);
             Matcher matchList = Pattern.compile("^LIST").matcher(address);
             if (matchList.matches())
             {
@@ -23,7 +24,7 @@ public class Loader
                     System.out.println(item);
                 }
             }
-            if (matchAddress.matches())
+             else if (matchAddress.matches())
             {
                 book.add(matchAddress.group());
                for (String book: book)
@@ -31,10 +32,10 @@ public class Loader
                    System.out.println(book);
                }
             }
-//            else if ()
-//            {
-//
-//            }
+             else if (matchExit.matches())
+            {
+                break;
+            }
             else
             {
                 System.out.println("Неправильный адрес");
