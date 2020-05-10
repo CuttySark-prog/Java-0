@@ -10,16 +10,22 @@ public class Loader
     public static void main(String args[])
     {
         System.out.printf("ВВедите электронный адрес%n");
-        Scanner enterNumber;
+        Scanner enterAddress;
         while (true)
         {
-            enterNumber = new Scanner(System.in);
-            String address = enterNumber.nextLine();
-            Matcher matchAddress = Pattern.compile("^(?<name>.+)@(?<box>.+).(?<end>.+)").matcher(address);
-
+            enterAddress = new Scanner(System.in);
+            String address = enterAddress.nextLine();
+            Matcher matchAddress = Pattern.compile("^ADD (?<mail>.(?<name>.+)@(?<box>.+)\\.(?<end>.+))").matcher(address);
+            Matcher matchList = Pattern.compile("^LIST").matcher(address);
+            if (matchList.matches())
+            {
+                for (String item : book) {
+                    System.out.println(item);
+                }
+            }
             if (matchAddress.matches())
             {
-                book.add(address);
+                book.add(matchAddress.group());
                for (String book: book)
                {
                    System.out.println(book);

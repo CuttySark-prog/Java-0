@@ -57,16 +57,13 @@ public class Main
             {
                 System.out.println("Команда добавения дела с индексом");
 
-                if (!(scanIndex(matchAddIndexed) == - 1))
+                int index = scanIndex(matchAddIndexed);
+                if (index != -1)
                     {
-                        System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
-                        list.add((scanIndex(matchAddIndexed)-1), matchAddIndexed.group("text"));
+                        System.out.println("Индекс: " + index);
+                        list.add((index-1), matchAddIndexed.group("text"));
                         printList();
                     }
-                else
-                {
-                    continue;
-                }
             }
             else if (matchAdd.matches())
             {
@@ -83,30 +80,24 @@ public class Main
             {
                 System.out.println("Команда замены существующего дела");
 
-                if (!(scanIndex(matchAddIndexed) == - 1))
+                int index = scanIndex(matchEdit);
+                if (index != - 1)
                 {
-                    System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
-                    list.add(((scanIndex(matchAddIndexed)-1)), matchEdit.group("text"));
+                    System.out.println("Индекс: " + index);
+                    list.add((index-1), matchEdit.group("text"));
                     printList();
-                }
-                else
-                {
-                    continue;
                 }
             }
             else  if(matchDelete.matches())
             {
                 System.out.println("Команда удаления существующего дела");
 
-                if (scanIndex(matchDelete) == 1)
+                int index = scanIndex(matchDelete);
+                if (index != -1)
                 {
-                    System.out.println("Индекс: " + (scanIndex(matchAddIndexed)));
-                    list.remove((scanIndex(matchAddIndexed)) - 1);
+                    System.out.println("Индекс: " + (index));
+                    list.remove(index - 1);
                     printList();
-                }
-                else
-                {
-                    continue;
                 }
             }
             else if(matchExit.matches())
