@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 
 public class Loader
 {
-    private static TreeMap<String, String> phoneList = new TreeMap();
-    private static ArrayList <String> nameList = new ArrayList<>();
+    private static TreeMap<String, String> nameList = new TreeMap();
+    private static ArrayList <String> phoneList = new ArrayList<>();
     private static Scanner enter = new Scanner(System.in);
     public static void main (String args[])
     {
@@ -14,6 +14,7 @@ public class Loader
             System.out.println("Введите контакт");
             String command = enter.nextLine();
             Matcher matchAddPhone = Pattern.compile("(?<number>\\d+)").matcher(command);
+
             Matcher matchAddName = Pattern.compile("(?<name>(^[A-Z]{1}[a-z]+))").matcher(command);
             Matcher matchList = Pattern.compile("LIST").matcher(command);
             Matcher matchExit = Pattern.compile("EXIT").matcher(command);
@@ -35,8 +36,7 @@ public class Loader
             }
             else if (matchList.matches())
             {
-                System.out.println("print");
-                printMap(phoneList);
+                printMap(nameList);
             }
             else
             {
@@ -48,50 +48,60 @@ public class Loader
 
     public static String addName(String s)
     {
-        if (nameList.contains(s))
+        if (nameList.containsKey(s))
         {
-           System.out.println(s + ": " + getKey(phoneList,s));
-
+            System.out.println(s + ": " + nameList.get(s));
         }
         else
         {
             System.out.println("ВВедите номер телефона");
             String number = enter.nextLine();
-            phoneList.put(number, s);
-            nameList.add(s);
+            nameList.put(s, number);
+            phoneList.add(number);
         }
         return s;
     }
     public static String addPhone(String s)
     {
-        if (phoneList.containsKey(s))
+        System.out.println("введен номер");
+        if (phoneList.contains(s))
         {
-            System.out.println(phoneList.get(s) + ": " + s);
+            System.out.println(getKey(nameList, s) + ": " + s);
         }
         else
         {
             String number = s;
             System.out.println("ВВедите имя");
             String name = enter.nextLine();
-            phoneList.put(number, name);
+            nameList.put(name, number);
+            phoneList.add(number);
         }
         return s;
     }
     private static void printMap(Map<String, String> map)
     {
+        int n = 1;
         for (String key: map.keySet())
         {
-            System.out.println(map.get(key) + ": " + key);
+            System.out.println(n + ". " + key + ": " + map.get(key));
+            n += 1;
         }
     }
-    public static <phone, name> phone getKey(Map<phone, name> map, name value)
+    public static <name, phone> name getKey(Map<name, phone> map, phone value)
     {
-        for (Map.Entry<phone, name> entry : map.entrySet()) {
+        for (Map.Entry<name, phone> entry : map.entrySet()) {
             if (entry.getValue().equals(value)) {
                 return entry.getKey();
             }
         }
         return null;
     }
+//    public static void printPhoneList ()
+//    {
+//        for (String item: phoneList)
+//        {
+//            System.out.println(item);
+//        }
+//    }
 }
 
