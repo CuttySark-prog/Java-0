@@ -4,8 +4,7 @@ import java.util.regex.Pattern;
 
 public class Loader
 {
-    private static TreeMap<String, String> nameList = new TreeMap();
-    //    private static ArrayList <String> phoneList = new ArrayList<>();
+    private static TreeMap<String, String> getNumberByName = new TreeMap<String, String>();
     private static Scanner enter = new Scanner(System.in);
     public static void main (String[] args)
     {
@@ -36,7 +35,7 @@ public class Loader
             }
             else if (matchList.matches())
             {
-                printMap(nameList);
+                printMap(getNumberByName);
             }
             else
             {
@@ -48,20 +47,20 @@ public class Loader
 
     public static void addName(String s)
     {
-        if (nameList.containsKey(s))
+        if (getNumberByName.containsKey(s))
         {
-            System.out.println(s + ": " + nameList.get(s));
+            System.out.println(s + ": " + getNumberByName.get(s));
         }
         else
         {
             System.out.println("ВВедите номер телефона");
             String number = enter.nextLine();
-            nameList.put(s, number);
+            getNumberByName.put(s, number);
         }
     }
     public static void addPhone(String s)
     {
-        if (!getKey(s).equals("no"))
+        if (getKey(s) != null)
         {
             System.out.println(getKey(s) + ": " + s);
         }
@@ -69,7 +68,7 @@ public class Loader
         {
             System.out.println("ВВедите имя");
             String name = enter.nextLine();
-            nameList.put(name, s);
+            getNumberByName.put(name, s);
         }
     }
     private static void printMap(Map<String, String> map)
@@ -83,12 +82,14 @@ public class Loader
     }
     public static String getKey(String value)
     {
-        for (Map.Entry<String, String > entry : nameList.entrySet()) {
-            if (entry.getValue().equals(value)) {
+        for (Map.Entry<String, String > entry : getNumberByName.entrySet())
+        {
+            if (entry.getValue().equals(value))
+            {
                 return entry.getKey();
             }
         }
-        return "no";
+        return null;
     }
 }
 

@@ -1,30 +1,48 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Loader
 {
-    public static final ArrayList<String> carNumber = new ArrayList<String>();
+    public static final ArrayList<String> carNumberList = new ArrayList<String>();
     public static final String[] letters = {"C", "M", "T", "B", "A", "P", "O", "H", "E", "Y"};
-    public static void generateList()
+    public static List<String> generateList()
     {
-        for (int i = 1; i == 199;i++)
+        System.out.println("генерация");
+        for (int i = 1; i <= 199;i++)
         {
             if (i <= 9)
             {
-                for (int y = 0; y >=letters.length; y++)
+                for (int y = 1; y <letters.length; y++)
                 {
-                    carNumber.add(letters[y]+i+i+i+letters[y]+letters[y]+"0"+i);
+                    String number = letters[y-1]+y+y+y+letters[y-1]+letters[y-1]+"0"+i;
+                    carNumberList.add(number);
                 }
             }
+            else if (i >9)
+            {
+                for (int y = 1; y <letters.length; y++)
+                {
+                    String number = letters[y-1]+y+y+y+letters[y-1]+letters[y-1]+i;
+                    carNumberList.add(number);
+                }
+            }
+            else
+            {
+                System.out.println("В разработке");
+            }
         }
+        return carNumberList;
     }
     public static void main (String[] args)
     {
         generateList();
-        carNumber.add("начало");
-        for (String number: carNumber)
+        int g = 0;
+        for (String number: carNumberList)
         {
             System.out.println(number);
+            g+=1;
         }
+        System.out.println(g);
     }
 }
