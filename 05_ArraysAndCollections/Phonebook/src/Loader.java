@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Loader
 {
-    private static TreeMap<String, String> getNumberByName = new TreeMap<String, String>();
+    private static TreeMap<String, String> NumberByName = new TreeMap<String, String>();
     private static Scanner enter = new Scanner(System.in);
     public static void main (String[] args)
     {
@@ -35,7 +35,7 @@ public class Loader
             }
             else if (matchList.matches())
             {
-                printMap(getNumberByName);
+                printMap(NumberByName);
             }
             else
             {
@@ -47,15 +47,15 @@ public class Loader
 
     public static void addName(String s)
     {
-        if (getNumberByName.containsKey(s))
+        if (NumberByName.containsKey(s))
         {
-            System.out.println(s + ": " + getNumberByName.get(s));
+            System.out.println(s + ": " + NumberByName.get(s));
         }
         else
         {
             System.out.println("ВВедите номер телефона");
             String number = enter.nextLine();
-            getNumberByName.put(s, number);
+            NumberByName.put(s, number);
         }
     }
     public static void addPhone(String s)
@@ -68,7 +68,7 @@ public class Loader
         {
             System.out.println("ВВедите имя");
             String name = enter.nextLine();
-            getNumberByName.put(name, s);
+            NumberByName.put(name, s);
         }
     }
     private static void printMap(Map<String, String> map)
@@ -82,7 +82,7 @@ public class Loader
     }
     public static String getKey(String value)
     {
-        for (Map.Entry<String, String > entry : getNumberByName.entrySet())
+        for (Map.Entry<String, String > entry : NumberByName.entrySet())
         {
             if (entry.getValue().equals(value))
             {

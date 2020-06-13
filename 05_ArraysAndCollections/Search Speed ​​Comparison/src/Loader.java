@@ -9,6 +9,11 @@ public class Loader
     public static List<String> generateList()
     {
         System.out.println("генерация");
+//        XYZ - различные буквы, N - цифры, R - регион (от 01 до 199)
+//
+//        XNNNYZR - пример, A111BC197, Y777HC66
+
+
         for (int i = 1; i <= 199;i++)
         {
             if (i <= 9)
