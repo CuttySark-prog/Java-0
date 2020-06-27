@@ -56,6 +56,7 @@ public class Loader
         Scanner scanner = new Scanner(System.in);
         for(;;)
         {
+            System.out.println(carNumberArrayList.get(0));
             String findNumber = scanner.next();
             directSearchByArrayList(findNumber);
             binarySearchOnSortedArrayList(findNumber);
@@ -65,60 +66,66 @@ public class Loader
     }
     public static void directSearchByArrayList(String s)
     {
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         if (carNumberArrayList.contains(s))
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск перебором: номер найден, поиск занял" + " " + duration + "нс");
         }
         else
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск перебором: номер не найден, поиск занял" + " " + duration + "нс");
         }
     }
     public static void binarySearchOnSortedArrayList(String s)
     {
-        long start = System.currentTimeMillis();
-        if (Collections.binarySearch(carNumberArrayList,s)>0)
+        Collections.sort(carNumberArrayList);
+        long start = System.nanoTime();
+        if (Collections.binarySearch(carNumberArrayList,s)>=0)
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск перебором: номер найден, поиск занял" + " " + duration + "нс");
         }
         else
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Бинарный поиск: номер не найден, поиск занял" + " " + duration + "нс");
         }
     }
     public static void searchInHashSet(String s)
     {
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         if (carNumberHashSet.contains(s))
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск в HashSet: номер найден, поиск занял" + " " + duration + "нс");
         }
         else
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск в HashSet: номер не найден, поиск занял" + " " + duration + "нс");
         }
 
     }
     public static void searchInTreeSet(String s)
     {
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         if (carNumberHashSet.contains(s))
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск в TreeSet: номер найден, поиск занял" + " " + duration + "нс");
         }
         else
         {
-            long duration = System.currentTimeMillis() - start;
+            long duration = System.nanoTime() - start;
             System.out.println("Поиск в TreeSet: номер не найден, поиск занял" + " " + duration + "нс");
         }
     }
-
 }
+//           Метод  	Результат	    В каких случаях хорошо использовать
+//        Перебор   	 122715860нс    Если мало элементов, и поиск надо выполнить один раз
+//        binarySearch	     27348нс    Если колличество элементов массива постоянно изменяется
+//        TreeSet   	       450нс    Во всех остальных случаях)))
+//        HashSet   	      3203нс    Если нужно проверить есть элемент или его нет
+
