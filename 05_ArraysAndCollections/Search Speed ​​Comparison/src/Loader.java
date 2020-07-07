@@ -2,18 +2,11 @@ import java.util.*;
 
 public class Loader
 {
-    public static ArrayList<String> carNumberArrayList = new ArrayList<>();
-    public static TreeSet<String> carNumberTreeSet = new TreeSet<>();
-    public static HashSet<String> carNumberHashSet = new HashSet<>();
-    public static final String[] letters = { "A", "B", "C", "E", "H", "M", "O", "P", "T", "Y"};
     public static List<String> generateList()
     {
         System.out.println("генерация");
-//        XYZ - различные буквы, N - цифры, R - регион (от 01 до 199)
-//
-//        XNNNYZR - пример, A111BC197, Y777HC66
-
-
+        String[] letters = { "A", "B", "C", "E", "H", "M", "O", "P", "T", "Y"};
+        ArrayList<String> carNumberArrayList = new ArrayList<>();
         for (int x = 0; x< letters.length; x++)
         {
             for (int y =0; y < letters.length; y++)
@@ -23,7 +16,8 @@ public class Loader
                     for (int i = 1; i <= 199; i++)
                     {
                         if (i <= 9) {
-                            for (int j = 1; j <= 9; j++) {
+                            for (int j = 1; j <= 9; j++)
+                            {
                                 String number = letters[x] + j + j + j + letters[y] + letters[z] + "0" + i;
                                 carNumberArrayList.add(number);
                             }
@@ -43,31 +37,22 @@ public class Loader
 
     public static void main (String[] args)
     {
-        generateList();
-        carNumberHashSet.addAll(carNumberArrayList);
-        carNumberTreeSet.addAll(carNumberArrayList);
-//        int g = 0;
-//        for (String number: carNumberArrayList)
-//        {
-//            System.out.println(number);
-//            g+=1;
-//        }
-//        System.out.println(g);
+        List<String> carNumberArrayList = generateList();
+
         Scanner scanner = new Scanner(System.in);
         for(;;)
         {
-            System.out.println(carNumberArrayList.get(0));
             String findNumber = scanner.next();
-            directSearchByArrayList(findNumber);
-            binarySearchOnSortedArrayList(findNumber);
-            searchInHashSet(findNumber);
-            searchInTreeSet(findNumber);
+            directSearchByArrayList(findNumber,carNumberArrayList);
+            binarySearchOnSortedArrayList(findNumber, carNumberArrayList);
+            searchInHashSet(findNumber, carNumberArrayList);
+            searchInTreeSet(findNumber, carNumberArrayList);
         }
     }
-    public static void directSearchByArrayList(String s)
+    public static void directSearchByArrayList(String s,List findList)
     {
         long start = System.nanoTime();
-        if (carNumberArrayList.contains(s))
+        if (findList.contains(s))
         {
             long duration = System.nanoTime() - start;
             System.out.println("Поиск перебором: номер найден, поиск занял" + " " + duration + "нс");
@@ -78,11 +63,11 @@ public class Loader
             System.out.println("Поиск перебором: номер не найден, поиск занял" + " " + duration + "нс");
         }
     }
-    public static void binarySearchOnSortedArrayList(String s)
+    public static void binarySearchOnSortedArrayList(String s,List findList)
     {
-        Collections.sort(carNumberArrayList);
+        Collections.sort(findList);
         long start = System.nanoTime();
-        if (Collections.binarySearch(carNumberArrayList,s)>=0)
+        if (Collections.binarySearch(findList,s)>=0)
         {
             long duration = System.nanoTime() - start;
             System.out.println("Поиск перебором: номер найден, поиск занял" + " " + duration + "нс");
@@ -93,8 +78,10 @@ public class Loader
             System.out.println("Бинарный поиск: номер не найден, поиск занял" + " " + duration + "нс");
         }
     }
-    public static void searchInHashSet(String s)
+    public static void searchInHashSet(String s, List carNumberArrayList)
     {
+        HashSet<String> carNumberHashSet = new HashSet<>();
+        carNumberHashSet.addAll(carNumberArrayList);
         long start = System.nanoTime();
         if (carNumberHashSet.contains(s))
         {
@@ -108,10 +95,12 @@ public class Loader
         }
 
     }
-    public static void searchInTreeSet(String s)
+    public static void searchInTreeSet(String s, List carNumberArrayList)
     {
+        TreeSet<String> carNumberTreeSet = new TreeSet<>();
+        carNumberTreeSet.addAll(carNumberArrayList);
         long start = System.nanoTime();
-        if (carNumberHashSet.contains(s))
+        if (carNumberTreeSet.contains(s))
         {
             long duration = System.nanoTime() - start;
             System.out.println("Поиск в TreeSet: номер найден, поиск занял" + " " + duration + "нс");
