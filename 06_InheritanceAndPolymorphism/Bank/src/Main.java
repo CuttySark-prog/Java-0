@@ -26,6 +26,13 @@ public class Main
       System.out.printf("На депозите осталось %.02f %n На счете стало %.02f %n", myDepositeAccount.getAccount(),myAccount.getAccount());
       myCardAccount.send(myDepositeAccount,22);
       System.out.printf("На карте осталось %.02f %n На депозите стало %.02f %n", myCardAccount.getAccount(),myDepositeAccount.getAccount());
+      myDepositeAccount.send(myAccount,500000.0);
+      System.out.printf("На депозите осталось %.02f %n На счете стало %.02f %n", myDepositeAccount.getAccount(),myAccount.getAccount());
+      myCardAccount.send(myAccount, 600000.0);
+      System.out.printf("На карте осталось %.02f %n На депозите стало %.02f %n", myCardAccount.getAccount(),myDepositeAccount.getAccount());
+      myAccount.send(myCardAccount, 8000000.0);
+      System.out.printf("На счете осталось %.02f %n На карте стало %.02f %n", myAccount.getAccount(),myCardAccount.getAccount());
+
 
 
   }
