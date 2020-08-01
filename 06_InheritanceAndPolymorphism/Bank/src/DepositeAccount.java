@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class DepositeAccount extends BankAccount
 {
-    public LocalDate dateOfOperation = LocalDate.of(1,1,1);
+    private LocalDate dateOfOperation = LocalDate.of(1,1,1);
     @Override
     public void replenishMoneyAccount(double money)
     {

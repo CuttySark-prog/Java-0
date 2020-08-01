@@ -1,7 +1,6 @@
-
 public class BankAccount
 {
-    public double account;
+    protected double account;
     public boolean isMoneyEnough(double moneyIn)
     {
         if (this.getAccount()>=moneyIn)
