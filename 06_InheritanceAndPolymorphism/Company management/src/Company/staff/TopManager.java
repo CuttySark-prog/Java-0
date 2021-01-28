@@ -1,4 +1,6 @@
 package Company.staff;
+import Company.TypeStaff;
+import Company.Company;
 
 public class TopManager extends Staff implements Employee
 {
@@ -6,34 +8,24 @@ public class TopManager extends Staff implements Employee
 //    если доход компании более 10 млн рублей.
 
     private int income = 11000000;
-//    private final double bonusCoefficient = 1.5;
-//    private double bonus = fixedSalary*bonusCoefficient;
+    private final double bonusCoefficient = 1.5;
+    private double bonus = fixedSalary*bonusCoefficient;
     private final int incomeForBonus = 1000000;
 
-    public TopManager(String name)
+    public TopManager(Company company)
     {
-//        fixedSalary = (int)(minWage*4+minWage*Math.random());
-        super(name);
-        System.out.println(fixedSalary);
+        super(company, TypeStaff.TOPMANAGER);
     }
     @Override
     public int getMonthSalary()
     {
         if (income > incomeForBonus)
         {
-            double bonusCoefficient = 1.5;
-            int bonus =(int) (fixedSalary*bonusCoefficient);
-
-//            System.out.println(bonus);
-//            int data = (int)(fixedSalary+bonus);
-
-            return (fixedSalary+bonus);
+            return (int) (company.getTopManagerFixedSalary() + bonus);
         }
         else
         {
-          //  System.out.println("блин");
             return fixedSalary;
         }
     }
-
 }
