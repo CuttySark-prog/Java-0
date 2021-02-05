@@ -18,7 +18,7 @@ public class TopManager implements Emploees
     }
     public int getMyCompanyIncome()
     {
-       return this.myCompany.companyIncome;
+       return this.myCompany.getCompanyIncome;
     }
 
     @Override
