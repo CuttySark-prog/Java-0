@@ -6,8 +6,6 @@ public interface Employee
 //
 //    getMonthSalary()
 //    Аргументы и возвращаемое значение метода выберите в соответствии с логикой начисления зарплат.
-  int getMonthSalary();
-
-  
+      int getMonthSalary();
 
 }

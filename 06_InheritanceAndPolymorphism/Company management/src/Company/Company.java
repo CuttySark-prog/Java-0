@@ -4,12 +4,11 @@ import Company.staff.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Company
 {
-    public static double getManagerFixedSalary;
 
-    //  public static Object getMinWage;
 //    1. Создайте класс компании Company, содержащей сотрудников и реализующей методы:
 //
 //    найм одного сотрудника — hire(),
@@ -19,33 +18,24 @@ public class Company
 //    Аргументы и возвращаемое значение методов выберите на основании логики работы вашего приложения.
 //    2. Создайте два метода, возвращающие список указанной длины (count). Они должны содержать сотрудников,
 //    отсортированных по убыванию и возрастанию заработной платы:
-//
-//    List<Employees> getTopSalaryStaff(int count),
-//    List<Employees> getLowestSalaryStaff(int count).
 
-    private int summOfmanagerMonthSalary = 0;
-    private int summOftopManagerMonthSalary = 0;
-    private int summOfoperatorMonthSalary = 0;
 
-    private double minWage = 20000;  //минимальная ставка
-    private int managerFixedSalary = 0;
-    private int topManagerFixedSalary = 0;
-    private int operatorFixedSalary = 0;
+    private final int minWage = 20000;  //минимальная ставка
+    private int managerFixedSalary;
+    private int topManagerFixedSalary;
+    private int operatorFixedSalary;
 
-    private static ArrayList<Employee> staff = new ArrayList<>();
-//
+    private static List<Staff> employees;
+    private final String name;
 
-    public Company()
+    public Company(String name)
     {
-      //  ArrayList<Employee>  Employees = new ArrayList<>();
-        int managerFixedSalary = (int) (minWage + (minWage*Math.random()));
-        int topManagerFixedSalary = (int)(minWage*4+minWage*Math.random());
-        int operatorFixedSalary = (int) (minWage+minWage*Math.random());
+        this.name = name;
+        managerFixedSalary = (int) (minWage + (minWage*Math.random()));
+        topManagerFixedSalary = (int)(minWage*4+minWage*Math.random());
+        operatorFixedSalary = (int) (minWage+minWage*Math.random());
 
-
-        ArrayList<TopManager> topManagerStaff = new ArrayList<>();
-        ArrayList<Operator> operatorStaff = new ArrayList<>();
-        ArrayList<Manager> managersStaff = new ArrayList<>();
+        employees = new ArrayList<>();
 
     }
 
@@ -53,22 +43,44 @@ public class Company
     {
         return managerFixedSalary;
     }
-
-
-    public void hire(Staff employee, String name)
+    public int getTopManagerFixedSalary()
     {
-        staff.add(employee,6);
+        return topManagerFixedSalary;
     }
-    public void hireAll(Collection employee)
+    public int getOperatorFixedSalary()
     {
-        staff.addAll(employee);
-       //return employee;
+        return operatorFixedSalary;
+    }
+
+    public void hire(TypeStaff type)
+    {
+        Staff staff = null;
+        switch (type)
+        {
+            case MANAGER:
+                employees.add(new Manager(this));
+            case OPERATOR:
+                employees.add(new Operator(this));
+            case TOPMANAGER:
+                employees.add(new TopManager(this));
+
+        }
+    }
+    public void hireAll(int count, TypeStaff type)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            hire(type);
+        }
     }
     public int getIncome()
     {
-    //    System.out.println(staff.get(0));
-        int income = staff.size();
+        int income = employees.size();
         return income;
+    }
+    public List<Staff> getEmployees()
+    {
+        return employees;
     }
 
 }
