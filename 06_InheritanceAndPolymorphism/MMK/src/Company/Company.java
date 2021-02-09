@@ -59,7 +59,7 @@ public class Company
     }
     public ArrayList<Integer> salaryArray()
     {
-        ArrayList <Integer> salary = this.staff.stream().<Integer>map(emploees -> emploees.getMonthSalary()).sorted(Comparator.naturalOrder()).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList <Integer> salary = this.staff.stream().map(emploees -> emploees.getMonthSalary()).sorted(Comparator.naturalOrder()).collect(Collectors.toCollection(ArrayList::new));
         return salary;
     }
     public void printTopMaxSalary(int top)
