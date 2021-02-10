@@ -65,9 +65,10 @@ public class Employee {
     this.workStart = workStart;
   }
 
-  public String toString() {
-    return name + " - " + salary + " - " +
-        (new SimpleDateFormat("dd.MM.yyyy")).format(workStart);
+  public String toString()
+  {
+    return /*"\n" + */ name + " - " + salary + " - " +
+            ((new SimpleDateFormat("dd.MM.yyyy")).format(workStart));
   }
 
   @Override
