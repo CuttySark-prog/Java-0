@@ -8,12 +8,12 @@ public class Company
 {
     protected ArrayList<Emploees> staff;
     protected  int minWage = 25000;
-    int managerFixedSalary ;
-    int topManagerFixedSalary ;
-    int operatorFixedSalary ;
-    int companyIncome = 0;
-    String name;
-
+    private int managerFixedSalary ;
+    private int topManagerFixedSalary ;
+    private int operatorFixedSalary ;
+    private int companyIncome = 0;
+    private String name;
+    
     public Company(String nameCompany)
     {
         this.managerFixedSalary = (int) (minWage + (minWage*Math.random()));
@@ -67,10 +67,11 @@ public class Company
        if(top<=salaryArray().size())
        {
            System.out.println("\n" + "Max" + top + "\n-------------------");
-           for (int i = salaryArray().size()-1; i >= (salaryArray().size() - top); i--)
-           {
-               System.out.println(salaryArray().get(i));
-           }
+            for (Object obj : this.salaryArray().subList((salaryArray().size()-top),salaryArray().size())) {System.out.println(obj);}
+//            for (int i = salaryArray().size()-1; i >= (salaryArray().size() - top); i--)
+//            {
+//                System.out.println(salaryArray().get(i));
+//            }
        }
            else System.out.println("Таково колличества сотрудников у нас нет");
     }
@@ -79,10 +80,11 @@ public class Company
         if(top<=salaryArray().size())
         {
             System.out.println("\n" + "Min" + top + "\n-------------------");
-            for (int i = 0; i < top; i++)
-            {
-                System.out.println(salaryArray().get(i));
-            }
+            for (Object obj : this.salaryArray().subList(0,top)) {System.out.println(obj);}
+//             for (int i = 0; i < top; i++)
+//             {
+//                 System.out.println(salaryArray().get(i));
+//             }
         }
 
         else System.out.println("Таково колличества сотрудников у нас нет");
